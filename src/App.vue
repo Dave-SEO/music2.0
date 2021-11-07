@@ -1,28 +1,32 @@
 <template>
-<div>
-  <router-view></router-view>
-</div> 
+  <div>
+    <Header></Header>
+    <Tab></Tab>
+    <router-view></router-view>
+  </div> 
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
-
+import { defineComponent, reactive, toRaw } from 'vue'
+import Header from '@/components/header/header.vue'
+import Tab from '@/components/tab/tab.vue'
 export default defineComponent({
   name: 'App',
+  setup(){
+    const state = reactive({
+      a: 1234556
+    })
+    return {
+      ...toRaw(state)
+    }
+  },
   components: {
-    HelloWorld
+    Tab,
+    Header
   }
 })
 </script>
 
 <style lang='scss'>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

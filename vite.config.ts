@@ -1,6 +1,6 @@
-import { defineConfig, PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { defineConfig, PluginOption } from 'vite'
 import registerRouter from './backend/router'
 const express = require('express')
 const app = express()
@@ -8,7 +8,7 @@ const app = express()
 const myPlugin = (): PluginOption => ({
   name: "configure-server",
   configureServer() {
-  //  registerRouter(app)
+   registerRouter(app)
   }
 })
 

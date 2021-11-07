@@ -1,11 +1,26 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const Home = () => import('@/views/home.vue'/* webpackChunkName: "home" */)
+const Recommend = () => import('@/views/recommend.vue'/* webpackChunkName: "recommend" */)
+const Toplist = () => import('@/views/toplist.vue'/* webpackChunkName: "toplist" */)
+const Singer = () => import('@/views/singer.vue'/* webpackChunkName: "singer" */)
+const Search = () => import('@/views/search.vue'/* webpackChunkName: "search" */)
 
 const routes: RouteRecordRaw[] = [
     {
-        path: '/',
-        component: Home
+        path: '/recommend',
+        component: Recommend
+    },
+    {
+        path: '/top-list',
+        component: Toplist
+    },
+    {
+        path: '/singer',
+        component: Singer
+    },
+    {
+        path: '/search',
+        component: Search
     }
 ]
 // import.meta.env.BASE_URL
