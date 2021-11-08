@@ -55,25 +55,31 @@ export default defineComponent({
 <style lang='scss' scoped>
   .slider {
    min-height: 1px;
+   height: 150px;
     font-size: 0;
     touch-action: pan-y;
     position: relative;
+     overflow: hidden;
     .slider-group {
      position: relative;
       overflow: hidden;
       white-space: nowrap;
+      height: 100%;
       .slider-page {
         width: 100%;
+        height: 100%;
         display: inline-block;
         transform: translate3d(0, 0, 0);
         backface-visibility: hidden;
         a {
           display: block;
           width: 100%;
+          height: 100%;
         }
         img {
           display: block;
           width: 100%;
+          height: 100%;
         }
       }
     }

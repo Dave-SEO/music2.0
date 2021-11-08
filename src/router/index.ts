@@ -7,6 +7,10 @@ const Search = () => import('@/views/search.vue'/* webpackChunkName: "search" */
 
 const routes: RouteRecordRaw[] = [
     {
+        path: '/',
+        redirect: '/recommend'
+    },
+    {
         path: '/recommend',
         component: Recommend
     },

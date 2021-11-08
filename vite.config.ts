@@ -19,7 +19,7 @@ export default defineConfig({
     port: 3002,
     proxy: {
       '/api': {
-        target: 'http://ustbhuangyi.com/music-next/',
+        target: 'http://127.0.0.1:9002',
         changeOrigin: true
       }
     }
