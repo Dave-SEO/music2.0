@@ -21,3 +21,24 @@ export interface RecommendProps {
 export const getRecommend = (): Promise<RecommendProps> => {
    return get<RecommendProps>('/api/getRecommend', {})
 }
+
+type SingersIndex = '热'| 'A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'
+export interface SingersList {
+    id: number;
+    mid: string;
+    name: string;
+    pic: string; 
+}
+export interface SingersProps {
+    title: SingersIndex,
+    list: SingersList[]
+}
+export interface SingerProps {
+    code: number,
+    result: {
+        singers: SingersProps[]
+    }
+}
+export const getSinger= (): Promise<SingerProps> => {
+    return get<SingerProps>('/api/getSingerList', {})
+}

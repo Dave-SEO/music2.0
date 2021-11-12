@@ -16,22 +16,28 @@ export default defineComponent({
       click: {
           type: Boolean,
           default: true
+      },
+      probeType: {
+          type: Number,
+          default: 1
       }
   },
-  setup(props) {
-   const rootScroll = ref<HTMLElement | null>(null)
+  emits: ['scroll'],
+  setup(props, {emit}) {
+   
    const state = reactive({ 
     })
     const methods = {
         init: () => {}
     }
-    useScroll(rootScroll, props)
-
+    
+    const {rootScroll, scroll} = useScroll(props, emit)
    
     return { 
       ...toRefs(state),
       rootScroll,
-      ...methods
+      ...methods,
+      scroll
     }
   }
  })
