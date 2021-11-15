@@ -21,7 +21,7 @@ const useSinger = (props: any) => {
   nextTick(() => {
     setTimeout(() => {
       calculate()
-    }, 300)
+    }, 800)
   })
 
   const fixedStyle = computed(() => {
