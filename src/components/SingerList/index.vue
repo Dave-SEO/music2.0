@@ -6,10 +6,10 @@
         ref="scrollRef"
         >
         <ul class="singerWrap" ref="groupRef">
-            <li v-for="(item, index) in singerData" :key="index" class="list-wrap">
+            <li v-for="(item, index) in singerData" :key="index"  class="list-wrap">
                 <h2 class="title">{{item.title}}</h2>
                 <ul class="singerList">
-                    <li v-for="singer in item.list" :key="singer">
+                    <li v-for="singer in item.list" :key="singer" @click="selectSinger(singer)">
                         <img :src="singer.pic" >
                         <span>{{singer.name}}</span>
                     </li>
@@ -47,10 +47,14 @@ export default defineComponent({
         default: []
     }
   },
-  setup(props) { 
+  emits: ['select'],
+  setup(props, {emit}) { 
     const {groupRef, onScroll, title, fixedStyle, currentIndex} = useSinger(props)
 
     const {shortcut, shortcutClick, scrollRef, shortcutMove} = useShortcut(props, groupRef)
+    const selectSinger = (singer: object) => {
+        emit('select', singer)
+    }
     return { 
       groupRef,
       onScroll,
@@ -60,7 +64,8 @@ export default defineComponent({
       currentIndex,
       shortcutClick,
       scrollRef,
-      shortcutMove
+      shortcutMove,
+      selectSinger
     }
   }
  })

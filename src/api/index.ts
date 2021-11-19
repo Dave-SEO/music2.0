@@ -39,6 +39,12 @@ export interface SingerProps {
         singers: SingersProps[]
     }
 }
+export interface Singer {
+    id: number;
+    mid: string;
+    name: string;
+    pic: string;
+  }
 export const getSinger= (): Promise<SingerProps> => {
     return get<SingerProps>('/api/getSingerList', {})
 }

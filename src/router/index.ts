@@ -4,7 +4,7 @@ const Recommend = () => import('@/views/recommend.vue'/* webpackChunkName: "reco
 const Toplist = () => import('@/views/toplist.vue'/* webpackChunkName: "toplist" */)
 const Singer = () => import('@/views/singer.vue'/* webpackChunkName: "singer" */)
 const Search = () => import('@/views/search.vue'/* webpackChunkName: "search" */)
-
+const SingerDetail = () => import('@/views/singer-detail.vue' /*webpackChunkName: "singer-detail" */)
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
@@ -20,7 +20,13 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/singer',
-        component: Singer
+        component: Singer,
+        children: [
+            {
+                path: ':id',
+                component: SingerDetail
+            }
+        ]
     },
     {
         path: '/search',

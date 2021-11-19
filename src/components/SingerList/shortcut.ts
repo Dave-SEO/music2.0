@@ -44,9 +44,6 @@ const useShortcut = (props: DataProps, groupRef: Ref<HTMLElement | null>, ) => {
            
             scrollTo(AnchorIndex)
         }
-       
-        
-      
     }
     function scrollTo (index: number){
         // if(isNaN(index)) return
