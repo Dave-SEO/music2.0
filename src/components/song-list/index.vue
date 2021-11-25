@@ -1,0 +1,62 @@
+<template>
+  <div class="song">
+      <ul class="list">
+          <li v-for="item in song" :key="item.id">
+              <h2 class="name">{{item.name}}</h2>
+              <p class="desc">{{item.singer}}</p>
+          </li>
+      </ul>
+  </div>
+</template>
+
+<script lang='ts'>
+import {defineComponent, PropType, reactive, toRefs} from 'vue'
+import {Singer} from '@/api'
+export default defineComponent({
+  name: 'song-list',
+  components: {
+
+  },
+  props: {
+    song: {
+        type: Array as PropType<Singer[]>,
+        required: true
+    },
+    modelValue: {
+      type: Number || String,
+      required:true
+    },
+  },
+  setup() { 
+   const state = reactive({ 
+    })
+    return { 
+      ...toRefs(state) 
+    }
+  }
+ })
+</script>
+
+<style lang="scss" scoped>
+.song{
+    width: 100%;
+    .name{
+        color: #fff;
+    }
+    .desc{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 4px;
+        color: hsla(0,0%,100%,.3);
+    }
+    .list{
+        padding: 20px;
+        box-sizing: border-box;
+        li{
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+    }
+}
+</style>

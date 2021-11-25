@@ -36,6 +36,7 @@ import Scroll from '@/components/base/scroll/index.vue'
 import useSinger from '@/components/SingerList/useSinger'
 import useShortcut from '@/components/SingerList/shortcut'
 import {SingersProps} from '@/api'
+
 export default defineComponent({
   name: 'SingerList',
   components:{

@@ -44,7 +44,36 @@ export interface Singer {
     mid: string;
     name: string;
     pic: string;
+    singer?: string;
   }
-export const getSinger= (): Promise<SingerProps> => {
+export const getSinger = (): Promise<SingerProps> => {
     return get<SingerProps>('/api/getSingerList', {})
+}
+
+
+export function getSingerList() {
+    return get('/api/getSingerList')
+}
+
+interface SingerDetail {
+    code: number,
+    result: {
+        songs: {
+            album: string
+            duration: number
+            id: number
+            mid: string
+            name: string
+            pic: string
+            singer: string
+            url: string
+        }[]
+    }
+}
+export const getSingerDetail = (params: {mid: string}): Promise<SingerDetail> => {
+    return get('/api/getSingerDetail', params)
+}
+
+export const getSongsUrl = (params: {mid: string[]}) => {
+    return get('/api/getSongsUrl', params)
 }

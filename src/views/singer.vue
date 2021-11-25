@@ -1,7 +1,7 @@
 <template>
   <div class="singer-wrap">
     <SingerList :singerData="singerData" v-if="singerData" @select="selectSinger"></SingerList>
-    <router-view ></router-view>
+    <router-view :singer='singerdetail'></router-view>
   </div>
 </template>
 
