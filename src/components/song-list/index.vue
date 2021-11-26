@@ -1,5 +1,5 @@
 <template>
-  <div class="song">
+  <div class="song" v-no-result='resultData'>
       <ul class="list">
           <li v-for="item in song" :key="item.id">
               <h2 class="name">{{item.name}}</h2>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang='ts'>
-import {defineComponent, PropType, reactive, toRefs} from 'vue'
+import {computed, defineComponent, PropType, reactive, toRefs} from 'vue'
 import {Singer} from '@/api'
 export default defineComponent({
   name: 'song-list',
@@ -27,11 +27,16 @@ export default defineComponent({
       required:true
     },
   },
-  setup() { 
-   const state = reactive({ 
+  setup(props) { 
+   const state = reactive({
+       text: '无数据了'
+    })
+    const resultData = computed(() => {
+        return props.song? false : true
     })
     return { 
-      ...toRefs(state) 
+      ...toRefs(state),
+      resultData
     }
   }
  })
@@ -40,6 +45,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .song{
     width: 100%;
+    background: #000;
     .name{
         color: #fff;
     }

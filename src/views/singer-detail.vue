@@ -9,6 +9,8 @@ import {defineComponent, PropType, reactive, toRefs} from 'vue'
 import { useRoute } from 'vue-router'
 import {getSingerDetail, getSongsUrl, Singer} from '@/api'
 import MusicList from '@/components/music-list/index.vue'
+import SessionStorage from '@/utils/cache'
+import {SINGER} from '@/utils/constant'
 export default defineComponent({
   name: 'singerDetail',
   components:{
@@ -32,10 +34,12 @@ export default defineComponent({
      singerList: []
     })
     const route = useRoute()
+    const store = new SessionStorage<Singer>()
+    const singer = props.singer || store.get(SINGER)
     const methods = {
         init: async () => {
           const {code,result} = await getSingerDetail({
-            mid: props.singer.mid
+            mid: singer.mid
           })
           const {result:{map}} = await getSongsUrl({
             mid: result.songs.map(ret => ret.mid)
@@ -50,7 +54,8 @@ export default defineComponent({
     methods.init()
     return { 
       ...toRefs(state),
-      ...methods
+      ...methods,
+      singer
     }
   }
  })
